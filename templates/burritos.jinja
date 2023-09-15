@@ -2,6 +2,14 @@
 
 {% block content%}
 
+<form class="form-inline" action="/burritos" method="post">
+            <label for="name">Name of Burrito</label>
+            <input type="text" name="name" id="name" required>
+            <label for="price">Price of Burrito</label>
+            <input type="number" name="price" id="price" required>
+            <input type="submit" value="Add Burrito">
+</form>            
+
 {% for burrito in burritos%}
 
 {{ burrito.name }} {{ burrito.price }}
