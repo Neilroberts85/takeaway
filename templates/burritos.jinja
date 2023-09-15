@@ -1,0 +1,11 @@
+{% extends "base.jinja"%}
+
+{% block content%}
+
+{% for burrito in burritos%}
+
+{{ burrito.name }} {{ burrito.price }}
+
+{% endfor %}
+
+{% endblock %}

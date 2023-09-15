@@ -2,12 +2,13 @@ from app import db
 
 class Burrito(db.Model):
     __tablename__ = "burritos"
-    id = db.Column(db.Integer, primarykey=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
-    price = db.Column(db.Integer)
+    price = db.Column(db.Float)
+    orders = db.relationship("Burrito_order", backref="burrito")
 
     def __repr__(self):
-        return f"<Burrito: id: {self.id}, meat: {self.meat}, beans: {self.beans}, rice: {self.rice}, salsa: {self.salsa}, avacado: {self.avacado}, cheese: {self.cheese}, sauce: {self.sauce}, price: {self.price}>"
+        return f"<Burrito: id: {self.id}, price: {self.price}>"
 
     
 

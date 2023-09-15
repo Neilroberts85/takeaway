@@ -1,0 +1,31 @@
+<html>
+    <head>
+      <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+      <title>Bodged Burritos</title>
+    </head>
+    <body>
+      <header>
+        <nav>
+          <ul>
+            <li class="navbar">
+                <a href="/home">Home</a>
+            </li>
+            <li class="navbar">
+                <a href="/orders">Orders</a>
+            </li>
+            <li class="navbar">
+                <a href="/burritos">Burritos</a>
+            </li>
+            <li class="navbar">
+                <a href="/contact">Contact</a>
+            </li>
+            <li class="navbar">
+                <a href="/about">About</a>
+            </li>
+          </ul>
+          <hr>
+        </nav>
+      </header>
+    {% block content %}{% endblock %}
+    </body>
+</html>
