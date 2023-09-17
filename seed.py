@@ -20,9 +20,10 @@ def seed():
     db.session.add(burrito3)
     db.session.commit()
 
-    order1 = Order()
-    order2 = Order()
-    order3 = Order()
+    order1 = Order(customer_name="Hungry Horatio", customer_phone_number= "07756748576", customer_street_name= "Letsby Avenue")
+    order2 = Order(customer_name="Starvin' Marvin", customer_phone_number= "07070707070", customer_street_name= "Sunset Strip")
+    order3 = Order(customer_name="Jumpin' Jack", customer_phone_number= "07756748573", customer_street_name= "Castle Terrace")
+
 
     db.session.add(order1)
     db.session.add(order2)

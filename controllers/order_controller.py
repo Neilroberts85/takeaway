@@ -16,3 +16,6 @@ def show_all_orders():
 def show_one_order(id):
     one_order = Order.query.all(id)
     return render_template("/show_one_burrito.jinja", order=one_order)
+
+# @order_blueprint.route("/neworder", methods=["Post"])
+# def create_order():

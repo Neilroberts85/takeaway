@@ -6,5 +6,6 @@ class Burrito_order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     burrito_id = db.Column(db.Integer, db.ForeignKey("burritos.id"))
     order_id = db.Column(db.Integer, db.ForeignKey("orders.id"))
+    # order_name = db.Column(db.String(64), db.ForeignKey("orders.customer_name"))
     
   
