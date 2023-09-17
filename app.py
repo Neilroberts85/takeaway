@@ -18,8 +18,9 @@ app.cli.add_command(seed)
 from controllers.burrito_controller import burrito_blueprint
 from controllers.order_controller import order_blueprint
 from controllers.burrito_order_controller import burrito_order_blueprint
-
+from controllers.customer_controller import customer_blueprint
 app.register_blueprint(burrito_blueprint)
 app.register_blueprint(order_blueprint)
 app.register_blueprint(burrito_order_blueprint)
+app.register_blueprint(customer_blueprint)
 

@@ -4,15 +4,15 @@
 
 <form class="form-inline" action="/burritos" method="post">
             <label for="name">Name of Burrito</label>
-            <input type="text" name="name" id="name" required>
+            <input type="text" name="name" id="name"  required>
             <label for="price">Price of Burrito</label>
-            <input type="number" name="price" id="price" required>
+            <input type="number" name="price" id="price" step="0.01" min="0" max="100" placeholder="0.00" required>
             <input type="submit" value="Add Burrito">
 </form>            
 
 {% for burrito in burritos%}
 
-{{ burrito.name }} {{ burrito.price }}
+{{ burrito.name }} £{{ burrito.price }}<br>
 
 {% endfor %}
 

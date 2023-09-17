@@ -1,0 +1,18 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+<h2>Name: {{ customer.customer_name }}</h2>
+<h3>Phone Number: {{ customer.customer_phone_number }}</h3>
+<h4>Address: {{ customer.customer_street_name }}</h4>
+
+{% for order in orders %}
+  <h5>Order Number: {{ order.id }}</h5>
+  <ul>
+    {% for burrito in order.burritos %}
+      <li>{{ burrito.name }} - Price: ${{ burrito.price }}</li>
+    {% endfor %}
+  </ul>
+{% endfor %}
+{% endblock %}
+
+

@@ -1,7 +1,7 @@
 {% extends "base.jinja"%}
 
 {% block content%}
-<form class="form-inline" action="/orders" method="post">
+<form class="form-inline" action="/customers" method="post">
             <label for="customer_name">Customer Name</label>
             <input type="text" name="customer_name" id="customer_name" required>
             <label for="phone_number">Phone Number</label>
@@ -11,10 +11,17 @@
             <input type="submit" value="Add Customer">
           </form>
 
-{% for order in orders %}
-<h2>Name: {{ order.customer_name }}</h2>
-<h3>Phone Number: {{ order.customer_phone_number}}</h3>
-<h4>Address: {{ order.customer_street_name }}</h4>
+{% for customer in customers %}
+
+<h2>Name: {{ customer.customer_name }}</h2>
+  <h3>Phone Number: {{ customer.customer_phone_number}}</h3>
+  <h4>Address: {{ customer.customer_street_name }}</h4>
+
+<form class="form" action="/customers/delete/{{ customer.id }}" method="POST">
+            <input type="submit" value="Delete">
+
+</form>
+<h5><a href="/customers/{{ customer.id }}">Select Customer</a>
 {% endfor %}
 
 {% endblock %}
