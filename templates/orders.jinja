@@ -1,0 +1,9 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+
+{% for order in orders %}
+<a href="/orders/{{order.id}}">Order Number: {{order.id}}<br>
+Name: {{order.customer.customer_name}}</a><br><br>
+{% endfor %}
+{% endblock %}
