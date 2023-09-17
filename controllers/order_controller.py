@@ -17,5 +17,15 @@ def show_one_order(id):
     one_order = Order.query.all(id)
     return render_template("/show_one_burrito.jinja", order=one_order)
 
-# @order_blueprint.route("/neworder", methods=["Post"])
-# def create_order():
+@order_blueprint.route("/orders", methods=["Post"])
+def create_customer():
+    new_customer_name = request.form["customer_name"]
+    new_phone_number = request.form["phone_number"]
+    new_street_name = request.form["street_name"]
+
+    customer_to_be_added = Order(customer_name=new_customer_name, customer_phone_number=new_phone_number, customer_street_name=new_street_name)
+
+    db.session.add(customer_to_be_added)
+    db.session.commit()
+
+    return redirect ("/orders")

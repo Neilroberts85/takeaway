@@ -1,6 +1,20 @@
 {% extends "base.jinja"%}
 
 {% block content%}
+<form class="form-inline" action="/orders" method="post">
+            <label for="customer_name">Customer Name</label>
+            <input type="text" name="customer_name" id="customer_name" required>
+            <label for="phone_number">Phone Number</label>
+            <input type="text" name="phone_number" id="phone_number" required>
+            <label for="street_name">Street Name</label>
+            <input type="text" name="street_name" id="street_name" required>
+            <input type="submit" value="Add Customer">
+          </form>
 
+{% for order in orders %}
+<h2>Name: {{ order.customer_name }}</h2>
+<h3>Phone Number: {{ order.customer_phone_number}}</h3>
+<h4>Address: {{ order.customer_street_name }}</h4>
+{% endfor %}
 
 {% endblock %}
