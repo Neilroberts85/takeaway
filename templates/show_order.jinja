@@ -1,8 +1,26 @@
 {% extends "base.jinja"%}
 
 {% block content%}
-write code for shwing one order then make a plan of the methods ang htmls you need to write.
-make sure you know how you want the website to be traversed PLAN PLAN PLAN YOU IDIOT
+
+    Order Number: {{ order.id }}<br>
+
+    {% if order.burrito_orders %}
+        
+            {% for burrito_order in order.burrito_orders %}
+                {{ burrito_order.burrito.name }}<br>
+               £{{ burrito_order.burrito.price }}
+                
+            {% endfor %}
+        
+    {% else %}
+      Empty
+    {% endif %}
+
+    
 
 
-{% endblock %}
+{% endblock%}
+
+
+
+

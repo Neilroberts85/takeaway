@@ -39,11 +39,7 @@ def delete_customer(id):
         db.session.delete(customer_to_delete)
         db.session.commit()
         return redirect ("/customers")
-    
-# @customer_blueprint.route("/customers/<id>/orders")
-# def customers_orders(id):
-#     orders_to_show = Customer.orders.query.get(id)
-#     return render_template("show_customer.jinja", orders=orders_to_show)
+
 
 @customer_blueprint.route("/order/<id>")
 def show_single_order(id):
@@ -51,9 +47,5 @@ def show_single_order(id):
     return redirect ("/create_order.jinja", order=order_to_show) 
 
 
-# @customer_blueprint.route("/customers/<id>/orders/add_to_order", methods=["POST"])
-# def add_to_order():
-#     burritos = Burrito.query.all()
-#     orders = Order.query.all()
 
 

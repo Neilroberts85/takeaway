@@ -1,11 +1,11 @@
 {% extends "base.jinja"%}
 
 {% block content%}
-
+<h2>Add Item To Menu</h1>
 <form class="form-inline" action="/burritos" method="post">
-            <label for="name">Name of Burrito</label>
+            <label for="name">Item Name</label>
             <input type="text" name="name" id="name"  required>
-            <label for="price">Price of Burrito</label>
+            <label for="price">Item Price</label>
             <input type="number" name="price" id="price" step="0.01" min="0" max="100" placeholder="0.00" required>
             <input type="submit" value="Add Burrito">
 </form>            

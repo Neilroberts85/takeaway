@@ -5,7 +5,9 @@ class Burrito(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
     price = db.Column(db.Float)
-    # orders = db.relationship('Order', secondary='burrito_orders', backref='burrito_items')
+    orders = db.relationship("Burrito_order", backref="burrito")
+    # orders = db.relationship()
+    
     def __repr__(self):
         return f"<Burrito: id: {self.id}, price: {self.price}>"
     

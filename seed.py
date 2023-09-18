@@ -10,9 +10,11 @@ from flask.cli import with_appcontext
 @click.command(name="seed")
 @with_appcontext
 def seed():
-    # Burrito.query.delete()
-    # Customer.query.delete()
-    # Order.query.delete()
+    Burrito_order.query.delete()
+    Order.query.delete()
+    Burrito.query.delete()
+    Customer.query.delete()
+    
 
     burrito1 = Burrito(name="Spicy Alsation", price=7.95)
     burrito2 = Burrito(name="Questionable Quorn", price=8.95)
@@ -49,6 +51,8 @@ def seed():
     db.session.add(burrito_order1)
     db.session.add(burrito_order2)
     db.session.add(burrito_order3)
+
+    db.session.commit()
 
 if __name__ == '__main__':
     seed()
