@@ -44,9 +44,9 @@ def seed():
     
     db.session.commit()
 
-    burrito_order1 = Burrito_order(burrito_id=burrito1.id, order_id=order1.id)
-    burrito_order2 = Burrito_order(burrito_id=burrito2.id, order_id=order2.id)
-    burrito_order3 = Burrito_order(burrito_id=burrito3.id, order_id=order3.id)
+    burrito_order1 = Burrito_order(burrito_id=burrito1.id, order_id=order1.id, quantity=1)
+    burrito_order2 = Burrito_order(burrito_id=burrito2.id, order_id=order2.id, quantity=2)
+    burrito_order3 = Burrito_order(burrito_id=burrito3.id, order_id=order3.id, quantity=3)
 
     db.session.add(burrito_order1)
     db.session.add(burrito_order2)

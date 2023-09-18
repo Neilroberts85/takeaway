@@ -2,25 +2,68 @@
 
 {% block content%}
 
-    Order Number: {{ order.id }}<br>
+    <h3>Order Number: {{ order.id }}<br></h3>
 
     {% if order.burrito_orders %}
         
             {% for burrito_order in order.burrito_orders %}
-                {{ burrito_order.burrito.name }}<br>
-               £{{ burrito_order.burrito.price }}
+                {{ burrito_order.burrito.name }}
+               £{{ burrito_order.burrito.price }}<br>
                 
             {% endfor %}
         
     {% else %}
       Empty
     {% endif %}
+<br>
+<br>
+<h4>SubTotal</h4>
 
+{% set ns = namespace(total = 0) %}
+{% for burrito_order in order.burrito_orders %}
+    {% set ns.total = ns.total + burrito_order.burrito.price %}
+{% endfor %}
+
+<div class="order-summary">
+    <div class="section">
+        <p>Sub Total:</p>
+        <p>£{{ ns.total }}</p>
+    </div>
+    <div class="section">
+        <p>Delivery:</p>
+        <p>£10.00</p>
+    </div>
+    <div class="section">
+        <p>Tip @ 40%:</p>
+        <p>£{{ ((ns.total + 10) * 0.4) }}</p>
+    </div>
+    <div class="section">
+        <p>Tax @ 35%:</p>
+        <p>£{{ (((ns.total + 10) * 1.4) * 0.35) }}</p>
+    </div>
+    <div class="section grand-total">
+        <p>Grand Total:</p>
+        <p>£{{ ((((ns.total + 10) * 1.4) * 1.35)) }}</p>
+    </div>
+</div>
+
+
+
+
+
+               
+        
+    <form action="/orders/{{ order.id }}" method="POST">
+        
+        {% for burrito in burritos %}
+        
+        <label for="{{burrito.id}}">{{burrito.name}} £{{burrito.price}} Quantity:</label>
+        <input type="number" id="{{burrito.id}}" name="{{burrito.id}}" min="0" value="0">
+        <br><br>
+        {% endfor %}
+        <input type="submit" value="Add to Order">
+    </form>
     
-
-
-{% endblock%}
-
-
-
-
+</body>
+</html>
+{% endblock %}

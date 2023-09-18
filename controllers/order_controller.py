@@ -15,9 +15,25 @@ def show_all_orders():
 @order_blueprint.route("/orders/<id>")
 def show_order(id):
     order_to_show = Order.query.get(id)
-    return render_template("show_order.jinja", order=order_to_show)
+    burritos = Burrito.query.all()
+    return render_template("show_order.jinja", order=order_to_show, burritos=burritos)
 
-@order_blueprint.route("/orders/<id>")
+@order_blueprint.route("/orders/<id>", methods=["POST"])
+def add_to_order(id):
+    burritos = Burrito.query.all()
+    
+
+    for burrito in burritos:
+        quantity = request.form[str(burrito.id)]
+        if int(quantity) > 0:
+            burrito_order = Burrito_order(burrito_id=int(burrito.id), order_id=id, quantity=quantity)
+            db.session.add(burrito_order)
+            db.session.commit()
+
+    id_for_path = id
+    return redirect (f"/orders/{id_for_path}")
+    
+
 
 
 
