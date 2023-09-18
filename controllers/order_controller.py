@@ -1,16 +1,36 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from flask import Blueprint
 from models.burrito import Burrito
 from models.burrito_order import Burrito_order
 from models.order import Order
+from models.customer import Customer
 from app import db
 
 order_blueprint = Blueprint("orders", __name__)
 
+@order_blueprint.route("/orders", methods=["POST"])
+def create_order():
+    customers = Customer.query.all()
+    
+    new_customer_id = request.form["customers"]
+    
+
+    order_to_be_added = Order(customer_id=new_customer_id)
+
+    db.session.add(order_to_be_added)
+    db.session.commit()
+
+    return redirect("/orders")
+
+
+
+
+
 @order_blueprint.route("/orders")
 def show_all_orders():
     all_orders = Order.query.all()
-    return render_template("/orders.jinja", orders=all_orders)
+    customers = Customer.query.all()
+    return render_template("/orders.jinja", orders=all_orders, customers=customers)
 
 @order_blueprint.route("/orders/<id>")
 def show_order(id):
@@ -35,8 +55,18 @@ def add_burritos_to_order(id):
         db.session.commit()
         return redirect (f"/orders/{id}")
 
+@order_blueprint.route("/burrito_order/delete/<id>", methods=["POST"])
+def delete_burrito_order(id):
+    
+    burrito_order_to_delete = Burrito_order.query.get(id)
+    order_page_id = burrito_order_to_delete.order_id
+    if burrito_order_to_delete:
+        db.session.delete(burrito_order_to_delete)
+        db.session.commit()
 
-
+    
+    return redirect (f"/orders/{order_page_id}")
+    
 
 
 
