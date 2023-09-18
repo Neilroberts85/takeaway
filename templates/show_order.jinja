@@ -8,10 +8,13 @@
         
             {% for burrito_order in order.burrito_orders %}
                 {{ burrito_order.burrito.name }}
-               £{{ burrito_order.burrito.price }}<br>
-                
+               £{{ burrito_order.burrito.price }}
+                Quantity: {{ burrito_order.quantity }}<br>
+                <form class="form" action="/burrito_order/delete/{{ burrito_order.id }}" method="POST">
+                <input type="submit" value="Delete"><br><br>
             {% endfor %}
-        
+        </form>
+    
     {% else %}
       Empty
     {% endif %}
@@ -21,7 +24,7 @@
 
 {% set ns = namespace(total = 0) %}
 {% for burrito_order in order.burrito_orders %}
-    {% set ns.total = ns.total + burrito_order.burrito.price %}
+    {% set ns.total = ns.total + ((burrito_order.burrito.price)*(burrito_order.quantity)) %}
 {% endfor %}
 
 <div class="order-summary">
