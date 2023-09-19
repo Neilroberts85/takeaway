@@ -66,7 +66,15 @@ def delete_burrito_order(id):
 
     
     return redirect (f"/orders/{order_page_id}")
-    
+
+@order_blueprint.route("/orders/delete/<id>", methods=["POST"])
+def delete_order(id):
+    order_to_delete = Order.query.get(id)
+    if order_to_delete:
+        db.session.delete(order_to_delete)
+        db.session.commit()
+        return redirect ("/orders")
+
 
 
 

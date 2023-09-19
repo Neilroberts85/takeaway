@@ -12,12 +12,14 @@
                 Quantity: {{ burrito_order.quantity }}<br>
                 <form class="form" action="/burrito_order/delete/{{ burrito_order.id }}" method="POST">
                 <input type="submit" value="Delete"><br><br>
+            </form>
             {% endfor %}
-        </form>
+        
     
     {% else %}
       Empty
     {% endif %}
+
 <br>
 <br>
 <h4>SubTotal</h4>

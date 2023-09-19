@@ -6,13 +6,12 @@
 <h4>Address: {{ customer.customer_street_name }}</h4>
 
 {% for order in orders %}
-  <h5>Order Number: {{ order.id }}</h5>
-  <ul>
-    {% for burrito in order.burritos %}
-      <li>{{ burrito.name }} - Price: ${{ burrito.price }}</li>
-    {% endfor %}
-  </ul>
+  <a href="/orders/{{order.id}}">Order Number: {{order.id}}
+  </a><br><br>
+  
 {% endfor %}
 {% endblock %}
 
 
+<a href="/orders/{{order.id}}">Order Number: {{order.id}}<br>
+Name: {{order.customer.customer_name}}</a><br><br>
