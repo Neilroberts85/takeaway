@@ -12,6 +12,7 @@ def show_all_customers():
     all_customers = Customer.query.all()
     return render_template("/customers.jinja", customers=all_customers)
 
+
 @customer_blueprint.route("/customers/<id>")
 def show_one_customer(id):
     customer_to_show = Customer.query.get(id)
@@ -31,6 +32,30 @@ def add_customer():
     db.session.commit()
 
     return redirect ("/customers")
+
+
+@customer_blueprint.route("/customers/update/<id>")
+def show_update_page(id):
+    customer_to_update = Customer.query.get(id)
+
+    return render_template("update_customer.jinja", customer=customer_to_update)
+
+
+@customer_blueprint.route("/customers/update/<id>", methods=["POST"])
+def update_customer(id):
+    customer_to_update = Customer.query.get(id)
+    
+    new_name = request.form.get("name")
+    new_phone_number = request.form.get("number")
+    new_street_name = request.form.get("address")
+  
+    customer_to_update.customer_name = new_name
+    customer_to_update.customer_phone_number = new_phone_number
+    customer_to_update.customer_street_name = new_street_name
+
+    db.session.commit()
+    return redirect(f"/customers/{id}")
+
 
 @customer_blueprint.route("/customers/delete/<id>", methods=["POST"])
 def delete_customer(id):

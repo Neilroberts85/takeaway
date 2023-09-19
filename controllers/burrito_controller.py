@@ -10,17 +10,17 @@ burrito_blueprint = Blueprint("burritos", __name__)
 def home():
     return render_template("/home.jinja")
 
-@burrito_blueprint.route("/burritos")
+@burrito_blueprint.route("/menu")
 def show_all_burritos():
     all_burritos = Burrito.query.all()
     return render_template("/burritos.jinja", burritos=all_burritos)
 
-@burrito_blueprint.route("/burritos/<id>")
+@burrito_blueprint.route("/menu/<id>")
 def show_one_burrito(id):
     burrito_to_show = Burrito.query.all(id)
     return render_template("/show_one_burrito.jinja", burrito=burrito_to_show)
 
-@burrito_blueprint.route("/burritos", methods = ["POST"])
+@burrito_blueprint.route("/menu", methods = ["POST"])
 def add_burrito():
     burrito_name = request.form["name"]
     burrito_price = request.form["price"]
@@ -30,6 +30,6 @@ def add_burrito():
     db.session.add(burrito_to_be_added)
     db.session.commit()
 
-    return redirect ("/burritos")
+    return redirect ("/menu")
 
 

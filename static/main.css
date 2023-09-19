@@ -1,0 +1,52 @@
+#page_container {
+    position: relative;
+    min-height: 100vh;
+  }
+
+
+.navbar {display:inline}
+
+body {background-color: #FFA351;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-weight: lighter;
+height: 80%;
+}
+
+main {height: 100%;}
+
+header {background-color: #FFBE7B;
+font-weight: lighter;}
+
+#footer {
+        position: absolute;
+        background-color: #EED971;
+        width: 100%;
+        height: 2.5rem;           
+      }
+
+.customer_info 
+    {display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between
+ }
+
+ .customer 
+    {display: flex;
+    flex-direction: column;
+    background-color: #EED971;
+    padding-left: 20;
+    padding-right: 20;
+    border-color: #FFBE7B;
+    border-radius: 10%;
+}
+
+
+h1 {font-weight: lighter;}
+h2 {font-weight: lighter;}
+h3 {font-weight: lighter;}
+h4 {font-weight: lighter;}
+h5 {font-weight: lighter;}
+
+input[type="submit"] {font-weight: lighter;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+

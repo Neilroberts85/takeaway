@@ -1,10 +1,13 @@
 <html>
     <head>
       <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-      <title>Bodged Burritos</title>
+      <script src="https://kit.fontawesome.com/8f904a72c8.js" crossorigin="anonymous"></script>
+      <title>BODGED BURRITOS</title>
     </head>
+    <div id="page_container">
     <body>
       <header>
+      <h1>BODGED BURRITOS</h1>
         <nav>
           <ul>
             <li class="navbar">
@@ -14,21 +17,22 @@
                 <a href="/customers">Customers</a>
             </li>
             <li class="navbar">
-                <a href="/burritos">Burritos</a>
+                <a href="/menu">Menu</a>
             </li>
             <li class="navbar">
                 <a href="/orders">Orders</a>
-            </li>
-            <li class="navbar">
-                <a href="/contact">Contact</a>
-            </li>
-            <li class="navbar">
-                <a href="/about">About</a>
             </li>
           </ul>
           <hr>
         </nav>
       </header>
     {% block content %}{% endblock %}
+    <footer id="footer">
+    
+    
+    </footer>
+    </div>
     </body>
+    
+    
 </html>

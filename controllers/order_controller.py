@@ -10,7 +10,7 @@ order_blueprint = Blueprint("orders", __name__)
 
 @order_blueprint.route("/orders", methods=["POST"])
 def create_order():
-    customers = Customer.query.all()
+    # customers = Customer.query.all()
     
     new_customer_id = request.form["customers"]
     

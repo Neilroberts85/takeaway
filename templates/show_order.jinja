@@ -1,74 +1,68 @@
-{% extends "base.jinja"%}
+{% extends "base.jinja" %}
 
-{% block content%}
+{% block content %}
+  <h3 class="order-header">Order Number: {{ order.id }}</h3>
 
-    <h3>Order Number: {{ order.id }}<br></h3>
+  {% if order.burrito_orders %}
+    <div class="order-items">
+      {% for burrito_order in order.burrito_orders %}
+        <div class="order-item">
+          <a href="/orders/{{ order.id }}" class="order-link">
+            {{ burrito_order.burrito.name }}
+            £{{ burrito_order.burrito.price }}
+          </a>
+          <span class="quantity">Quantity: {{ burrito_order.quantity }}</span>
+          <form class="delete-form" action="/burrito_order/delete/{{ burrito_order.id }}" method="POST">
+            <input type="submit" class="delete-button" value="Delete">
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="empty-message">Empty</p>
+  {% endif %}
 
-    {% if order.burrito_orders %}
-        
-            {% for burrito_order in order.burrito_orders %}
-                {{ burrito_order.burrito.name }}
-               £{{ burrito_order.burrito.price }}
-                Quantity: {{ burrito_order.quantity }}<br>
-                <form class="form" action="/burrito_order/delete/{{ burrito_order.id }}" method="POST">
-                <input type="submit" value="Delete"><br><br>
-            </form>
-            {% endfor %}
-        
-    
-    {% else %}
-      Empty
-    {% endif %}
+  <br>
+  <br>
+  <h4>SubTotal</h4>
 
-<br>
-<br>
-<h4>SubTotal</h4>
-
-{% set ns = namespace(total = 0) %}
-{% for burrito_order in order.burrito_orders %}
+  {% set ns = namespace(total = 0) %}
+  {% for burrito_order in order.burrito_orders %}
     {% set ns.total = ns.total + ((burrito_order.burrito.price)*(burrito_order.quantity)) %}
-{% endfor %}
+  {% endfor %}
 
-<div class="order-summary">
+  <div class="order-summary">
     <div class="section">
-        <p>Sub Total:</p>
-        <p>£{{ ns.total }}</p>
+      <p class="summary-label">Sub Total:</p>
+      <p class="summary-value">£{{ ns.total }}</p>
+    </div>
+    {% if ns.total >  0 %}
+    <div class="section">
+      <p class="summary-label">Delivery:</p>
+      <p class="summary-value">£10.00</p>
+      {% set ns.total = ns.total + 10 %}
+      {% endif %}
     </div>
     <div class="section">
-        <p>Delivery:</p>
-        <p>£10.00</p>
+      <p class="summary-label">Tip @ 40%:</p>
+      <p class="summary-value">£{{ ((ns.total) * 0.4) }}</p>
     </div>
     <div class="section">
-        <p>Tip @ 40%:</p>
-        <p>£{{ ((ns.total + 10) * 0.4) }}</p>
-    </div>
-    <div class="section">
-        <p>Tax @ 35%:</p>
-        <p>£{{ (((ns.total + 10) * 1.4) * 0.35) }}</p>
+      <p class="summary-label">Tax @ 35%:</p>
+      <p class="summary-value">£{{ (((ns.total) * 1.4) * 0.35) }}</p>
     </div>
     <div class="section grand-total">
-        <p>Grand Total:</p>
-        <p>£{{ ((((ns.total + 10) * 1.4) * 1.35)) }}</p>
+      <p class="summary-label">Grand Total:</p>
+      <p class="summary-value">£{{ ((((ns.total) * 1.4) * 1.35)) }}</p>
     </div>
-</div>
+  </div>
 
-
-
-
-
-               
-        
-    <form action="/orders/{{ order.id }}" method="POST">
-        
-        {% for burrito in burritos %}
-        
-        <label for="{{burrito.id}}">{{burrito.name}} £{{burrito.price}} Quantity:</label>
-        <input type="number" id="{{burrito.id}}" name="{{burrito.id}}" min="0" value="0">
-        <br><br>
-        {% endfor %}
-        <input type="submit" value="Add to Order">
-    </form>
-    
-</body>
-</html>
+  <form action="/orders/{{ order.id }}" method="POST">
+    {% for burrito in burritos %}
+        <label for="{{ burrito.id }}" class="burrito-label">{{ burrito.name }} £{{ burrito.price }}     Quantity:</label> 
+        <input type="number" id="{{ burrito.id }}" name="{{ burrito.id }}" min="0" value="0" class="quantity-input">
+      <br><br>
+    {% endfor %}
+        <input type="submit" value="Add to Order" class="add-to-order-button">
+  </form>
 {% endblock %}

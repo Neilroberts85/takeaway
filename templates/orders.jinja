@@ -1,23 +1,29 @@
 {% extends "base.jinja" %}
 
 {% block content %}
-
-<form class="form-inline" action="/orders" method="post">
+  <form class="order-form" action="/orders" method="post">
     <label for="dropdown">Customer:</label> 
     <select id="dropdown" name="customers">
-    {% for customer in customers %}
-    <option value="{{customer.id}}">{{ customer.customer_name }}</option>
+      {% for customer in customers %}
+        <option value="{{ customer.id }}">{{ customer.customer_name }}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" class="add-order-button" value="Add Order">
+  </form>
+
+  <div class="order-list">
+    {% for order in orders %}
+      <div class="order-item">
+        <a href="/orders/{{ order.id }}" class="order-link">
+          Order Number: {{ order.id }}<br>
+          Name: {{ order.customer.customer_name }}
+        </a>
+        <label for="completed">Completed:</label>
+        <input type="checkbox" id="completed" name="completed" value="completed">
+        <form class="delete-order-form" action="/orders/delete/{{ order.id }}" method="POST">
+          <input type="submit" class="delete-order-button" value="Delete">
+        </form>
+      </div>
     {% endfor %}
-    <input type="submit" value="Add order">
-</form>
-
-
-
-{% for order in orders %}
-<a href="/orders/{{order.id}}">Order Number: {{order.id}}<br>
-Name: {{order.customer.customer_name}}</a><br><br>
-<form class="form" action="/orders/delete/{{ order.id }}" method="POST">
-                <input type="submit" value="Delete"><br><br>
-</form>
-{% endfor %}
+  </div>
 {% endblock %}
