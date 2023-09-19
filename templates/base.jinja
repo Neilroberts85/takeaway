@@ -4,35 +4,31 @@
       <script src="https://kit.fontawesome.com/8f904a72c8.js" crossorigin="anonymous"></script>
       <title>BODGED BURRITOS</title>
     </head>
-    <div id="page_container">
     <body>
-      <header>
-      <h1>BODGED BURRITOS</h1>
-        <nav>
-          <ul>
-            <li class="navbar">
+      <div class="wrapper">
+        
+          <div class="logo">
+            <h1>BODGED BURRITOS</h1>
+          </div>
+          <div class="right_menu">
+            <button class="menu_button">Menu</button>
+              <div class="dropdown_menu">
                 <a href="/home">Home</a>
-            </li>
-            <li class="navbar">
                 <a href="/customers">Customers</a>
-            </li>
-            <li class="navbar">
                 <a href="/menu">Menu</a>
-            </li>
-            <li class="navbar">
                 <a href="/orders">Orders</a>
-            </li>
-          </ul>
-          <hr>
-        </nav>
-      </header>
+              </div>
+          </div>
+    <div class="main">    
     {% block content %}{% endblock %}
+    </div>
     <footer id="footer">
     
     
     </footer>
-    </div>
+      </div>
     </body>
+    
     
     
 </html>

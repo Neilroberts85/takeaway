@@ -32,30 +32,31 @@
   {% endfor %}
 
   <div class="order-summary">
-    <div class="section">
-      <p class="summary-label">Sub Total:</p>
-      <p class="summary-value">£{{ ns.total }}</p>
-    </div>
-    {% if ns.total >  0 %}
-    <div class="section">
-      <p class="summary-label">Delivery:</p>
-      <p class="summary-value">£10.00</p>
-      {% set ns.total = ns.total + 10 %}
-      {% endif %}
-    </div>
-    <div class="section">
-      <p class="summary-label">Tip @ 40%:</p>
-      <p class="summary-value">£{{ ((ns.total) * 0.4) }}</p>
-    </div>
-    <div class="section">
-      <p class="summary-label">Tax @ 35%:</p>
-      <p class="summary-value">£{{ (((ns.total) * 1.4) * 0.35) }}</p>
-    </div>
-    <div class="section grand-total">
-      <p class="summary-label">Grand Total:</p>
-      <p class="summary-value">£{{ ((((ns.total) * 1.4) * 1.35)) }}</p>
-    </div>
+  <div class="section">
+    <p class="summary-label">Sub Total:</p>
+    <p class="summary-value">£{{ ns.total }}</p>
   </div>
+  {% if ns.total >  0 %}
+  <div class="section">
+    <p class="summary-label">Delivery:</p>
+    <p class="summary-value">£10.00</p>
+    {% set ns.total = ns.total + 10 %}
+  </div>
+  {% endif %}
+  <div class="section">
+    <p class="summary-label">Tip @ 40%:</p>
+    <p class="summary-value">£{{ ((ns.total) * 0.4) }}</p>
+  </div>
+  <div class="section">
+    <p class="summary-label">Tax @ 35%:</p>
+    <p class="summary-value">£{{ (((ns.total) * 1.4) * 0.35) }}</p>
+  </div>
+  <div class="section grand-total">
+    <p class="summary-label">Grand Total:</p>
+    <p class="summary-value">£{{ ((((ns.total) * 1.4) * 1.35)) }}</p>
+  </div>
+</div>
+
 
   <form action="/orders/{{ order.id }}" method="POST">
     {% for burrito in burritos %}
