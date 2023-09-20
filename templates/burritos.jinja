@@ -14,8 +14,10 @@
 <h2>Menu</h2>
 {% for burrito in burritos%}
 
-{{ burrito.name }} £{{ burrito.price }}<br>
-
+{{ burrito.name }} £{{ burrito.price }}
+<form class="delete-button" action="/burritos/delete/{{ burrito.id }}" method="POST">
+            <input type="submit" value="Delete" class="submit-menu"><br>
+</form>
 {% endfor %}
 </div>
 

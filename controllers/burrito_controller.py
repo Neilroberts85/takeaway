@@ -32,4 +32,12 @@ def add_burrito():
 
     return redirect ("/menu")
 
+@burrito_blueprint.route("/burritos/delete/<id>", methods=["POST"])
+def delete_burrito(id):
+    burrito_to_delete = Burrito.query.get(id)
+    if burrito_to_delete:
+        db.session.delete(burrito_to_delete)
+        db.session.commit()
+        return redirect ("/menu")
+
 
