@@ -17,7 +17,7 @@
         <a href="/orders/{{ order.id }}" class="order-link">
           Order Number: {{ order.id }}<br>
           Name: {{ order.customer.customer_name }}
-        </a>
+        </a><br>
         <label for="completed">Completed:</label>
         <input type="checkbox" id="completed" name="completed" value="completed">
         <form class="delete-order-form" action="/orders/delete/{{ order.id }}" method="POST">
