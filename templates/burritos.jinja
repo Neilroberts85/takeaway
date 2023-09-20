@@ -2,23 +2,22 @@
 
 {% block content%}
 <h2>Add Item To Menu</h1>
-<form class="form-inline" action="/menu" method="post">
-            <label for="name">Item Name</label>
-            <input type="text" name="name" id="name" autocomplete="off" required>
-            <label for="price">Item Price</label>
-            <input type="number" name="price" id="price" step="0.01" min="0" max="100" placeholder="0.00" required>
-            <input type="submit" value="Add Burrito">
-</form>            
-<div id="burritos">
-<br><br>
-<h2>Menu</h2>
-{% for burrito in burritos%}
+    <form class="form-inline" action="/menu" method="post">
+        <label for="name">Item Name</label>
+        <input type="text" name="name" id="name" autocomplete="off" required>
+        <label for="price">Item Price</label>
+        <input type="number" name="price" id="price" step="0.01" min="0" max="100" placeholder="0.00" required>
+        <input type="submit" value="Add Burrito">
+    </form>
+    <div id="burritos">
+        <br><br>
+        <h2>Menu</h2>
+        {% for burrito in burritos%}
 
-{{ burrito.name }} £{{ burrito.price }}
-<form class="delete-button" action="/burritos/delete/{{ burrito.id }}" method="POST">
+        {{ burrito.name }} £{{ burrito.price }}
+        <form class="delete-button" action="/burritos/delete/{{ burrito.id }}" method="POST">
             <input type="submit" value="Delete" class="submit-menu"><br>
-</form>
-{% endfor %}
-</div>
-
+        </form>
+        {% endfor %}
+    </div>
 {% endblock %}

@@ -22,6 +22,15 @@ def create_order():
 
     return redirect("/orders")
 
+@order_blueprint.route("/customers/<id>/create_order")
+def create_order_from_cust(id):
+
+    order_to_be_added = Order(customer_id=id)
+
+    db.session.add(order_to_be_added)
+    db.session.commit()
+
+    return redirect(f"/customers/{id}")
 
 
 

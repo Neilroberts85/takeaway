@@ -1,6 +1,9 @@
 {% extends "base.jinja" %}
 
 {% block content %}
+
+<a href="/customers"><button>&larr;Back To Customers</button></a>
+
 <div id="show-customer">
 <h2>{{ customer.customer_name }}</h2>
 <h4>{{ customer.customer_phone_number }}</h3>
@@ -8,7 +11,16 @@
 
 
 <a href="/customers/update/{{customer.id}}"><button>Change Details</button></a>
-</div><br>
+
+
+
+<a href="/customers/{{customer.id}}/create_order"><button>Add Order</button></a>
+</div>
+<br><br>
+
+
+
+
 <h3>Order History</h3>
 
 {% for order in orders %}

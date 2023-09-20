@@ -1,237 +1,323 @@
-body {background-color: #FFA351;
+body {
+    background-color: #FFA351;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: lighter;
     height: 100vh;
     font-size: 20px;
 }
 
-.wrapper {width: 90%;
-        margin: 0 auto;}
+.wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
 
-.logo {float: left;}
+.logo {
+    float: left;
+}
 
-.main {position: absolute;
+.main {
+    position: absolute;
     margin-top: 10%;
-width: 90%;}
+    width: 90%;
+}
 
-.menu_button {background-color: transparent;
-        color: black;
-        padding: 16px;
-        font-size: 16px;
-        cursor: pointer;
-        border: 1px solid}
+.menu_button {
+    background-color: transparent;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid
+}
 
-.right_menu {position: relative;
-        display: inline-block;
-        float: right;}
+.right_menu {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
 
-.dropdown_menu {display: none;
-        position: absolute;
-        background-color: tomato;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;}
+.dropdown_menu {
+    display: none;
+    position: absolute;
+    background-color: tomato;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
 
-.dropdown_menu a {color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;}
+.dropdown_menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
 
-.dropdown_menu a:hover {background-color: tomato;
-        }
+.dropdown_menu a:hover {
+    background-color: tomato;
+}
 
-.right_menu:hover .dropdown_menu {display: block;}
+.right_menu:hover .dropdown_menu {
+    display: block;
+}
 
-.right_menu:hover .menu_button {background-color: transparent;}
+.right_menu:hover .menu_button {
+    background-color: transparent;
+}
 
 
-       
 
 
-                 
-      
 
-.customer_info 
-    {display: flex;
+
+
+
+.customer_info {
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    
-    gap: 2em;
- }
 
- .customer 
-    {
-    
+    gap: 2em;
+}
+
+.customer {
+
     background-color: tomato;
     padding-left: 20;
     padding-right: 20;
     border-color: #FFBE7B;
     border-radius: 10%;
     width: 200px;
-    
-    
-    }
-.click-order-button {font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-font-weight: lighter;}
 
 
-h1 {font-weight: lighter;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
-h2 {font-weight: lighter;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
-h3 {font-weight: lighter;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
-h4 {font-weight: lighter;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
-h5 {font-weight: lighter;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+}
+
+.click-order-button {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: lighter;
+}
 
 
-input[type="submit"] {font-weight: lighter;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+h1 {
+    font-weight: lighter;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h2 {
+    font-weight: lighter;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h3 {
+    font-weight: lighter;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h4 {
+    font-weight: lighter;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h5 {
+    font-weight: lighter;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
 
-    
-#left {background-color: tomato;
-        width: 33.33%;
-        float: left;
-        
-        padding-left: 20;
-        padding-right: 20;
-        border-color: #FFBE7B;
-        border-radius: 10%;
-        height: 1000px;
-        
-        }
+input[type="submit"] {
+    font-weight: lighter;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
 
-#right {background-color: tomato;
-        width: 33.33%;
-        float: right;
 
-        
+#left {
+    background-color: tomato;
+    width: 33.33%;
+    float: left;
+
     padding-left: 20;
     padding-right: 20;
     border-color: #FFBE7B;
     border-radius: 10%;
     height: 1000px;
-    }
+
+}
 
 
-#middle {
-        width: 33.33%;
-        margin: 0 auto;
-        border: 10;
-        font-size: 20px;
-        
-       
-        }
-
-#burritos {background-color: tomato;
+#right {
+    background-color: tomato;
     width: 33.33%;
-    float: left;
-    
+    float: right;
+
+
     padding-left: 20;
     padding-right: 20;
     border-color: #FFBE7B;
     border-radius: 10%;
-    height: 800px;}
+    height: 1000px;
+}
 
-.order-list {display: flex;
+
+#middle {
+    width: 20%;
+    margin: 0 auto;
+    border: 10;
+    font-size: 20px;
+
+
+}
+
+#burritos {
+    background-color: tomato;
+    width: 33.33%;
+    float: left;
+
+    padding-left: 20;
+    padding-right: 20;
+    border-color: #FFBE7B;
+    border-radius: 10%;
+    height: 800px;
+}
+
+.order-list {
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    
-    gap: 2em}
 
-.order-item {background-color: tomato;
+    gap: 2em
+}
+
+.order-item {
+    background-color: tomato;
     padding-left: 20;
     padding-right: 20;
     border-radius: 10%;
     width: 200px;
-    height: 150px;}
+    height: 150px;
+}
 
-    .order-box {background-color: tomato;
+.order-box {
+    background-color: tomato;
     padding-left: 20;
     padding-right: 20;
     border-radius: 10%;
     width: 200px;
-    height: 250px;}
+    height: 250px;
+}
 
-.order-form-order {background-color: peachpuff;
+/* .order-form-order {background-color: peachpuff;
     padding-left: 20;
     padding-right: 20;
     border-radius: 10%;
     width: 200px;
     height: 200px;
+} */
+
+select#dropdown {
+    height: 20px;
+}
+
+.delete-order-button {
+    background-color: transparent;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid
 }
 
 
-.delete-order-button {background-color: transparent;
+.add-order-button {
+    background-color: transparent;
     color: black;
     padding: 16px;
     font-size: 16px;
     cursor: pointer;
-    border: 1px solid}
+    border: 1px solid
+}
 
-
-    .add-order-button {background-color: transparent;
-        color: black;
-        padding: 16px;
-        font-size: 16px;
-        cursor: pointer;
-        border: 1px solid}
-
-    .click-order-button {background-color: transparent;
-        color: black;
-        padding: 16px;
-        font-size: 16px;
-        cursor: pointer;
-        border: 1px solid;
-        font-size: 20px;}
-
-    #show-customer {background-color: tomato;
-        padding-left: 20;
-        padding-right: 20;
-        border-radius: 10%;
-        width: 200px;
-        height: 250px;}
-   
-        #update-field {background-color: tomato;
-        padding-left: 20;
-        padding-right: 20;
-        border-radius: 10%;
-        width: 400px;
-        height: 250px;}
-
-.update {background-color: transparent;
-    color: black;
-    padding: 16px;
-    font-size: 16px;
-    cursor: pointer;
-    border: 1px solid}
-
-button {background-color: transparent;
+.click-order-button {
+    background-color: transparent;
     color: black;
     padding: 16px;
     font-size: 16px;
     cursor: pointer;
     border: 1px solid;
+    font-size: 20px;
+}
+
+#show-customer {
+    background-color: tomato;
+    padding-left: 20;
+    padding-right: 20;
+    border-radius: 10%;
+    width: 200px;
+    height: 280px;
+}
+
+#update-field {
+    background-color: tomato;
+    padding-left: 20;
+    padding-right: 20;
+    border-radius: 10%;
+    width: 400px;
+    height: 250px;
+}
+
+.update {
+    background-color: transparent;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid
+}
+
+button {
+    background-color: transparent;
+    color: black;
+    padding: 16px;
+    margin: 3;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: lighter;}
+    font-weight: lighter;
+}
 
-    input[type=submit] {background-color: transparent;
-        color: black;
-        padding: 16px;
-        font-size: 16px;
-        cursor: pointer;
-        border: 1px solid}
+input[type=submit] {
+    background-color: transparent;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid
+}
 
-table {border: 2px solid;
-width: 40%;}
+table {
+    border: 2px solid;
+    width: 40%;
+}
 
-td.summary-value {text-align: right;}
+td.summary-value {
+    text-align: right;
+}
 
-.quantity-input {float: right;}
-.submit-menu {float: right;}
+.quantity-input {
+    float: right;
+}
 
-button.menu_button {margin-top: 20px;}
+.submit-menu {
+    float: right;
+}
+
+button.menu_button {
+    margin-top: 20px;
+}
+
+input.submit-menu {
+    margin-bottom: 5;
+}
+
+.show_order_page 
+  

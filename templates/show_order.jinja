@@ -1,85 +1,88 @@
 {% extends "base.jinja" %}
 
 {% block content %}
+<a href="/customers"><button>&larr;Back To Customers</button></a><br>
+<a href="/orders"><button>&larr;Back To Orders</button></a>
+
 <div class="show_order_page">
-  <h2 class="order-header">Order Number: {{ order.id }}</h2>
-  <h2 class="order-header">Name: {{ order.customer.customer_name }}</h2>
- 
-<div id="left">
-<br><br><br>
-    {% if order.burrito_orders %}
-    <div class="order-items">
-      {% for burrito_order in order.burrito_orders %}
-        <div class="order-item">
-          <a href="/orders/{{ order.id }}" class="order-link">
-            {{ burrito_order.burrito.name }}<br>
-            £{{ burrito_order.burrito.price }}<br>
-          </a>
-          <span class="quantity"> 
-          {% for i in range(burrito_order.quantity) %}🌯{% endfor %}
-</span>
+    <h2 class="order-header">Order Number: {{ order.id }}</h2>
+    <h2 class="order-header">Name: {{ order.customer.customer_name }}</h2>
 
-          <form class="delete-form" action="/burrito_order/delete/{{ burrito_order.id }}" method="POST">
-            <input type="submit" class="delete-button" value="Delete">
-          </form>
+    <div id="left">
+        <br><br><br>
+        {% if order.burrito_orders %}
+        <div class="order-items">
+            {% for burrito_order in order.burrito_orders %}
+            <div class="order-item">
+                <a href="/orders/{{ order.id }}" class="order-link">
+                    {{ burrito_order.burrito.name }}<br>
+                    £{{ burrito_order.burrito.price }}<br>
+                </a>
+                <span class="quantity">
+                    {% for i in range(burrito_order.quantity) %}🌯{% endfor %}
+                </span>
+
+                <form class="delete-form" action="/burrito_order/delete/{{ burrito_order.id }}" method="POST">
+                    <input type="submit" class="delete-button" value="Delete">
+                </form>
+            </div>
+            {% endfor %}
+
         </div>
-    {% endfor %}
-      
+        {% else %}
+        <p class="empty-message">Empty</p>
+        {% endif %}
     </div>
-  {% else %}
-    <p class="empty-message">Empty</p>
-  {% endif %}
-  </div>
 
-  <br>
-  <br>
-  <div id="middle">
-  
+    <br>
+    <br>
+    <div id="middle">
 
-  {% set ns = namespace(total = 0) %}
-  {% for burrito_order in order.burrito_orders %}
-    {% set ns.total = ns.total + ((burrito_order.burrito.price)*(burrito_order.quantity)) %}
-  {% endfor %}
 
-  <table class="order-summary">
-  <tr>
-    <td class="summary-label">Sub Total:</td>
-    <td class="summary-value">£{{ ns.total }}</td>
-  </tr>
-  {% if ns.total > 0 %}
-  <tr>
-    <td class="summary-label">Delivery:</td>
-    <td class="summary-value">£10.00</td>
-    {% set ns.total = ns.total + 10 %}
-  </tr>
-  {% endif %}
-  <tr>
-    <td class="summary-label">Tip @ 40%:</td>
-    <td class="summary-value">£{{ ((ns.total) * 0.4) }}</td>
-  </tr>
-  <tr>
-    <td class="summary-label">Tax @ 35%:</td>
-    <td class="summary-value">£{{ (((ns.total) * 1.4) * 0.35) }}</td>
-  </tr>
-  <tr class="grand-total">
-    <td class="summary-label">Grand Total:</td>
-    <td class="summary-value">£{{ ((((ns.total) * 1.4) * 1.35)) }}</td>
-  </tr>
-</table>
+        {% set ns = namespace(total = 0) %}
+        {% for burrito_order in order.burrito_orders %}
+        {% set ns.total = ns.total + ((burrito_order.burrito.price)*(burrito_order.quantity)) %}
+        {% endfor %}
+
+        <table class="order-summary">
+            <tr>
+                <td class="summary-label">Sub Total:</td>
+                <td class="summary-value">£{{ ns.total }}</td>
+            </tr>
+            {% if ns.total > 0 %}
+            <tr>
+                <td class="summary-label">Delivery:</td>
+                <td class="summary-value">£10.00</td>
+                {% set ns.total = ns.total + 10 %}
+            </tr>
+            {% endif %}
+            <tr>
+                <td class="summary-label">Tip @ 40%:</td>
+                <td class="summary-value">£{{ ((ns.total) * 0.4) }}</td>
+            </tr>
+            <tr>
+                <td class="summary-label">Tax @ 35%:</td>
+                <td class="summary-value">£{{ (((ns.total) * 1.4) * 0.35) }}</td>
+            </tr>
+            <tr class="grand-total">
+                <td class="summary-label">Grand Total:</td>
+                <td class="summary-value">£{{ ((((ns.total) * 1.4) * 1.35)) }}</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div id="right">
+        <form action="/orders/{{ order.id }}" method="POST">
+            <br><br><br>
+            {% for burrito in burritos %}
+
+            <label for="{{ burrito.id }}" class="burrito-label">{{ burrito.name }} £{{ burrito.price }}</label>
+            <input type="number" id="{{ burrito.id }}" name="{{ burrito.id }}" min="0" value="0" class="quantity-input">
+            <br><br>
+            {% endfor %}
+            <input type="submit" value="Add to Order" class="add-to-order-button">
+        </form>
+    </div>
 </div>
-
-
-<div id="right">
-  <form action="/orders/{{ order.id }}" method="POST">
-    <br><br><br>
-    {% for burrito in burritos %}
-    
-        <label for="{{ burrito.id }}" class="burrito-label">{{ burrito.name }} £{{ burrito.price }}</label> 
-        <input type="number" id="{{ burrito.id }}" name="{{ burrito.id }}" min="0" value="0" class="quantity-input">
-      <br><br>
-    {% endfor %}
-        <input type="submit" value="Add to Order" class="add-to-order-button">
-  </form>
-  </div>
-  </div>
 {% endblock %}
