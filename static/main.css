@@ -2,6 +2,8 @@ body {background-color: #FFA351;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: lighter;
     height: 100vh;
+    font-size: 20px;
+
 }
 
 .wrapper {width: 1000px;

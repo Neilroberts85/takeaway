@@ -1,7 +1,10 @@
 {% extends "base.jinja" %}
 
 {% block content %}
-  <h3 class="order-header">Order Number: {{ order.id }}</h3>
+
+  <h2 class="order-header">Order Number: {{ order.id }}</h2>
+  <h2 class="order-header">Name: {{ order.customer.customer_name }}</h2>
+ 
 
   {% if order.burrito_orders %}
     <div class="order-items">
@@ -11,7 +14,10 @@
             {{ burrito_order.burrito.name }}
             £{{ burrito_order.burrito.price }}
           </a>
-          <span class="quantity">Quantity: {{ burrito_order.quantity }}</span>
+          <span class="quantity">Quantity: {% for i in range(burrito_order.quantity) %}
+    🌯
+  {% endfor %}
+</span>
           <form class="delete-form" action="/burrito_order/delete/{{ burrito_order.id }}" method="POST">
             <input type="submit" class="delete-button" value="Delete">
           </form>
@@ -31,31 +37,32 @@
     {% set ns.total = ns.total + ((burrito_order.burrito.price)*(burrito_order.quantity)) %}
   {% endfor %}
 
-  <div class="order-summary">
-  <div class="section">
-    <p class="summary-label">Sub Total:</p>
-    <p class="summary-value">£{{ ns.total }}</p>
-  </div>
-  {% if ns.total >  0 %}
-  <div class="section">
-    <p class="summary-label">Delivery:</p>
-    <p class="summary-value">£10.00</p>
+  <table class="order-summary">
+  <tr>
+    <td class="summary-label">Sub Total:</td>
+    <td class="summary-value">£{{ ns.total }}</td>
+  </tr>
+  {% if ns.total > 0 %}
+  <tr>
+    <td class="summary-label">Delivery:</td>
+    <td class="summary-value">£10.00</td>
     {% set ns.total = ns.total + 10 %}
-  </div>
+  </tr>
   {% endif %}
-  <div class="section">
-    <p class="summary-label">Tip @ 40%:</p>
-    <p class="summary-value">£{{ ((ns.total) * 0.4) }}</p>
-  </div>
-  <div class="section">
-    <p class="summary-label">Tax @ 35%:</p>
-    <p class="summary-value">£{{ (((ns.total) * 1.4) * 0.35) }}</p>
-  </div>
-  <div class="section grand-total">
-    <p class="summary-label">Grand Total:</p>
-    <p class="summary-value">£{{ ((((ns.total) * 1.4) * 1.35)) }}</p>
-  </div>
-</div>
+  <tr>
+    <td class="summary-label">Tip @ 40%:</td>
+    <td class="summary-value">£{{ ((ns.total) * 0.4) }}</td>
+  </tr>
+  <tr>
+    <td class="summary-label">Tax @ 35%:</td>
+    <td class="summary-value">£{{ (((ns.total) * 1.4) * 0.35) }}</td>
+  </tr>
+  <tr class="grand-total">
+    <td class="summary-label">Grand Total:</td>
+    <td class="summary-value">£{{ ((((ns.total) * 1.4) * 1.35)) }}</td>
+  </tr>
+</table>
+
 
 
   <form action="/orders/{{ order.id }}" method="POST">
