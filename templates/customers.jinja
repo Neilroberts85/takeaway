@@ -18,7 +18,7 @@
         <h3>Phone Number: {{ customer.customer_phone_number}}</h3>
         <h4>Address: {{ customer.customer_street_name }}</h4>
 
-        <form class="form" action="/customers/delete/{{ customer.id }}" method="POST">
+        <form class="delete-button" action="/customers/delete/{{ customer.id }}" method="POST">
             <input type="submit" value="Delete">
         </form>
         

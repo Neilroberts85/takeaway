@@ -1,18 +1,22 @@
 {% extends "base.jinja" %}
 
 {% block content %}
+<div id="show-customer">
 <h2>{{ customer.customer_name }}</h2>
 <h4>{{ customer.customer_phone_number }}</h3>
 <h4>{{ customer.customer_street_name }}</h4>
 
-<a href="/customers/update/{{customer.id}}"><button>UPDATE</button></a>
+
+<a href="/customers/update/{{customer.id}}"><button>Change Details</button></a>
+</div><br>
 <h3>Order History</h3>
 
 {% for order in orders %}
   <a href="/orders/{{order.id}}"><button>{{order.id}}</button>
-  </a><br><br>
+  </a>&nbsp;
   
 {% endfor %}
+
 {% endblock %}
 
 

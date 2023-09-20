@@ -1,7 +1,8 @@
 {% extends "base.jinja" %}
 
 {% block content %}
-
+<div id="update-field">
+<br>
     <h3>{{ customer.customer_name }}<h3></h3>
 <form action="/customers/update/{{customer.id}}" method="POST">
 
@@ -16,7 +17,8 @@
      
     <label for="address">Update Address</label>
     <input type="text" name="address" id="address" value={{customer.customer_street_name}}>
-    
+    <br>
     <input type="submit" class="update" value="Update">
 </form>
+</div>
 {% endblock%}

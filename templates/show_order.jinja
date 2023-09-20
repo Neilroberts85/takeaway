@@ -7,24 +7,23 @@
  
 <div id="left">
 <br><br><br>
-  {% if order.burrito_orders %}
+    {% if order.burrito_orders %}
     <div class="order-items">
       {% for burrito_order in order.burrito_orders %}
         <div class="order-item">
           <a href="/orders/{{ order.id }}" class="order-link">
-            {{ burrito_order.burrito.name }}
-            £{{ burrito_order.burrito.price }}
+            {{ burrito_order.burrito.name }}<br>
+            £{{ burrito_order.burrito.price }}<br>
           </a>
-          <span class="quantity">Quantity: {% for i in range(burrito_order.quantity) %}
-    🌯
-  {% endfor %}
+          <span class="quantity"> 
+          {% for i in range(burrito_order.quantity) %}🌯{% endfor %}
 </span>
 
           <form class="delete-form" action="/burrito_order/delete/{{ burrito_order.id }}" method="POST">
             <input type="submit" class="delete-button" value="Delete">
           </form>
         </div>
-      {% endfor %}
+    {% endfor %}
       
     </div>
   {% else %}
@@ -75,7 +74,7 @@
     <br><br><br>
     {% for burrito in burritos %}
     
-        <label for="{{ burrito.id }}" class="burrito-label">{{ burrito.name }} £{{ burrito.price }}     Quantity:</label> 
+        <label for="{{ burrito.id }}" class="burrito-label">{{ burrito.name }} £{{ burrito.price }}</label> 
         <input type="number" id="{{ burrito.id }}" name="{{ burrito.id }}" min="0" value="0" class="quantity-input">
       <br><br>
     {% endfor %}

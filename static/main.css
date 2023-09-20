@@ -5,14 +5,14 @@ body {background-color: #FFA351;
     font-size: 20px;
 }
 
-.wrapper {width: 100%;
+.wrapper {width: 90%;
         margin: 0 auto;}
 
 .logo {float: left;}
 
 .main {position: absolute;
     margin-top: 10%;
-width: 100%;}
+width: 90%;}
 
 .menu_button {background-color: transparent;
         color: black;
@@ -92,19 +92,20 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
         padding-right: 20;
         border-color: #FFBE7B;
         border-radius: 10%;
-        height: 800px;
+        height: 1000px;
         }
 
 
 #right {background-color: tomato;
         width: 33.33%;
         float: right;
+
         
     padding-left: 20;
     padding-right: 20;
     border-color: #FFBE7B;
     border-radius: 10%;
-    height: 800px;
+    height: 1000px;
     }
 
 
@@ -127,10 +128,89 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
     border-radius: 10%;
     height: 800px;}
 
+.order-list {display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+    gap: 2em}
+
 .order-item {background-color: tomato;
     padding-left: 20;
     padding-right: 20;
-    border-color: #FFBE7B;
     border-radius: 10%;
     width: 200px;
-    height: 200px;}
+    height: 190px;}
+
+.order-form-order {background-color: peachpuff;
+    padding-left: 20;
+    padding-right: 20;
+    border-radius: 10%;
+    width: 200px;
+    height: 200px;
+}
+
+
+.delete-order-button {background-color: transparent;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid}
+
+
+    .add-order-button {background-color: transparent;
+        color: black;
+        padding: 16px;
+        font-size: 16px;
+        cursor: pointer;
+        border: 1px solid}
+
+    .click-order-button {background-color: transparent;
+        color: black;
+        padding: 16px;
+        font-size: 16px;
+        cursor: pointer;
+        border: 1px solid;
+        font-size: 20px;}
+
+    #show-customer {background-color: tomato;
+        padding-left: 20;
+        padding-right: 20;
+        border-radius: 10%;
+        width: 200px;
+        height: 250px;}
+   
+        #update-field {background-color: tomato;
+        padding-left: 20;
+        padding-right: 20;
+        border-radius: 10%;
+        width: 400px;
+        height: 250px;}
+
+.update {background-color: transparent;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid}
+
+button {background-color: transparent;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid}
+
+    input[type=submit] {background-color: transparent;
+        color: black;
+        padding: 16px;
+        font-size: 16px;
+        cursor: pointer;
+        border: 1px solid}
+
+table {border: 2px solid;
+width: 40%;}
+
+td.summary-value {text-align: right;}
+
+.quantity-input {float: right;}
