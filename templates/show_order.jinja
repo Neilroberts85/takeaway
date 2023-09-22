@@ -38,7 +38,7 @@
     <br>
     <div id="middle">
 
-
+{# you want this logic inside your controller most likey, our templates's role is just to tell the browser how to display things, not _what_ to display, this is crossing the line slighly in terms of single responsability #}
         {% set ns = namespace(total = 0) %}
         {% for burrito_order in order.burrito_orders %}
         {% set ns.total = ns.total + ((burrito_order.burrito.price)*(burrito_order.quantity)) %}

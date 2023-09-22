@@ -1,4 +1,8 @@
 {% extends "base.jinja"%}
+{% block stylelinks %}
+      {# <link rel="stylesheet" href="{{ url_for('static', filename='what_ever_css_file_you_wanted_to_use_for)_this_template.css') }}"> #}
+      {# we can add css files for spesfic teplates this way #}
+{% endblock %}
 
 {% block content%}
 <h2>Add Item To Menu</h1>

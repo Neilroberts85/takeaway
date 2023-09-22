@@ -1,3 +1,8 @@
+/* you want to split this up into mutiple parts */
+/* you most likey want to add another {% block %} to your  base.jinja I've commented an example in burritos.jinja*/
+
+/* probs would want to consider putting your templates into seperate folders. */
+
 body {
     background-color: #FFA351;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

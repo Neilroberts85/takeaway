@@ -66,6 +66,7 @@ def delete_customer(id):
         return redirect ("/customers")
 
 
+# this should live in the order controller, as its a request about a "order"
 @customer_blueprint.route("/order/<id>")
 def show_single_order(id):
     order_to_show = Order.query.get(id)
