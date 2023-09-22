@@ -14,6 +14,7 @@ from models.order import Order
 migrate = Migrate(app, db)
 from seed import seed
 app.cli.add_command(seed)
+# probably want a default controller function for a home route ("/")
 
 from controllers.burrito_controller import burrito_blueprint
 from controllers.order_controller import order_blueprint
